@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+class BinarySearch {
+    public static int binarySearch(int A[], int n, int x) {
+        int lb = 0;
+        int ub = n - 1;
+        
+        // Binary search loop, updated
+        while (lb <= ub) {
+            int mid = (lb + ub) / 2;
+            
+            if (A[mid] == x) {
+                return mid; // Element found, return index
+            } else if (x > A[mid]) {
+                lb = mid + 1; // Adjust lower bound
+            } else {
+                ub = mid - 1; // Adjust upper bound
+            }
+        }
+        return -1; // Element not found
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("ENTER SIZE OF ARRAY:");
+        int n = sc.nextInt();
+        int A[] = new int[n];
+        
+        System.out.println("ENTER ELEMENTS:");
+        for (int i = 0; i < n; i++) {
+            A[i] = sc.nextInt();
+        }
+
+        System.out.println("ENTER ELEMENT TO BE SEARCHED:");
+        int x = sc.nextInt();
+        
+        int loc = binarySearch(A, n, x);
+        
+        if (loc != -1) {
+            System.out.println("Element found at position: " + loc);
+        } else {
+            System.out.println("Element not found.");
+        }
+    }
+}
